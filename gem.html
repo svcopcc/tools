@@ -135,7 +135,22 @@
             
             const chatHistory = [{
                 role: "user",
-                parts: [{ text: `請根據這個想法，為我寫一個可用於 Gemini 的 Gems 範本，包含用途說明和一個範例提示。範本內容要簡潔、實用。想法：${prompt}` }]
+                parts: [{ text: 
+                `請根據這個想法，為我寫一個可用於 Gemini 的 Gems 範本。  
+                輸出格式必須至少包含以下四個欄位，(可增加提示：使用者要輸入、提供哪些資訊...等)：  
+                
+                title: <標題>  
+                description: |  
+                  <用途與說明，多行文字可放這裡>  
+                instructions: |  
+                  <詳細使用說明，讓使用者知道怎麼用這個 gem>  
+                example_prompts: |  
+                  - <範例提示 1>  
+                  - <範例提示 2>  
+                
+                請務必以 YAML 格式回傳，且四個欄位都要存在。  
+                想法：${prompt}`
+                }]
             }];
             const payload = {
                 contents: chatHistory,
