@@ -1,0 +1,16 @@
+<!-- 父頁 -->
+<iframe
+  id="ai-app"
+  width="100%" height="800px" frameborder="0" style="border:0;"
+  referrerpolicy="no-referrer"
+  src=""  <!-- 由下方腳本動態設定 -->
+></iframe>
+
+<script>
+  const childBase = 'https://api-gpt-1040553566393.us-west1.run.app/';
+  const key = new URLSearchParams(location.search).get('api'); // 父頁 URL 上的 ?api=
+
+  const u = new URL(childBase);
+  if (key) u.searchParams.set('api', key);
+  document.getElementById('ai-app').src = u.toString();
+</script>
